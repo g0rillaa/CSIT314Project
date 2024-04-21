@@ -1,0 +1,47 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* pill ui */
+.window-pane {
+    justify-content: space-between; /* Spaces children equally */
+    background-color: #ffffff;
+    width: calc(100% - 60px);
+    margin: 60px auto; /* Shorthand to handle top and horizontal margins */
+    border-radius: 20px;
+}
+
+.click-btn {
+    margin: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: var(--primary-color); /* Example button color */
+    color: white; /* Text color */
+    border: none;
+    border-radius: 5px; /* Rounded corners for the button */
+    transition-duration: 0.1s;
+}
+
+.click-btn:hover {
+    background-color: var(--primary-color-hvr); /* Darker shade for hover effect */
+}
+
+
+
+
+:root {
+    --primary-color: #5ccbe7;
+    --primary-color-hvr: #86d5e9;
+
+    --bg-color: #b4e2fc;
+}

@@ -1,0 +1,65 @@
+body {
+    background-color: var(--bg-color);
+}
+
+.registerPane {
+    display: flex; /* Establishes a flex container */
+    align-items: center; /* Vertically centers the children */
+    justify-content: space-between; /* Spaces children equally */
+    background-color: #ffffff;
+    width: calc(100% - 60px);
+    margin: 60px auto; /* Shorthand to handle top and horizontal margins */
+    height: 400px;
+    border-radius: 20px;
+}
+
+.registerForm {
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.registerImage {
+    width: 50%;
+    height: 100%;
+    background-image: url('./assets/food.webp');
+    background-size: cover;
+    background-position: center;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-repeat: no-repeat;
+}
+
+.registerInput {
+    width: 220px;
+    height: 24px;
+    padding: 15px;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.registerButton {
+    width: 100px;
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid var(--primary-color);
+    background-color: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition-duration: 0.1s;
+}
+
+.registerButton:hover {
+    border: 2px solid var(--primary-color-hvr);
+    background-color: #d0eefa;
+}
+
+.registerDropdown {
+    width: 220px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 10px;
+}
