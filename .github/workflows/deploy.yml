@@ -29,7 +29,11 @@ jobs:
 
       - name: Deploy
         run: |
-          npm config set "//github.com/:_authToken" ${{ secrets.GITHUB_TOKEN }}
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git config --global credential.helper store
+          echo "https://${{ secrets.GITHUB_TOKEN }}:x-oauth-basic@github.com/g0rillaa/CSIT314Project.git" > ~/.git-credentials
           npm run deploy
+        
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
