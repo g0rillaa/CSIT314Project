@@ -20,6 +20,9 @@ function LoginForm() {
                 saveToken(response.data.token);
                 displayNotification('success', `Logged in as ${username}`);
                 document.getElementById("login-button").innerHTML = `${username}`
+                setTimeout(() => {
+                    window.location.reload()
+                },3000)
             }
         } catch (error) {
             console.error('Error making the request:', error);

@@ -12,7 +12,6 @@ function AccountView() {
 
     const fetchAcc = async () => {
         const response = await getAccount();
-        console.log(response)
         setUsername(response.data.username);
         setAccType(response.data.acc_type)
     };
@@ -20,14 +19,15 @@ function AccountView() {
 
     const logout = () => {
         clearToken();
-        window.location.href = '/login';
+        window.location.href = '/#/login';
+        window.location.reload()
     }
 
     const directToOrders = () => {
-        window.location.href = '/account/orders'
+        window.location.href = '/#/account/orders'
     }
     const directToRestaurantManage = () => {
-        window.location.href = '/managerestaurant'
+        window.location.href = '/#/managerestaurant'
     }
 
     return (
