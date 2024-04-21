@@ -17,7 +17,7 @@ export const getToken = () => {
 export const loggedInRedirect = async () => {
 	const token = Cookies.get(TOKEN_KEY);
 	if(token){
-		window.location.href = '/#/account';
+		window.location.href = '/CSIT314Project/#/account';
         return;
 	}
 }
@@ -26,7 +26,7 @@ export const loggedOutRedirect = async () => {
 	const token = Cookies.get(TOKEN_KEY);
     if(!token){
         console.log("No token Redirecting...");
-        window.location.href = '/#/login';
+        window.location.href = '/CSIT314Project/#/login';
         return;
     }
 	try {
@@ -37,7 +37,7 @@ export const loggedOutRedirect = async () => {
 			if(response.data.errorMsg === 'Invalid token'){
 				clearToken()
 				console.log("Invalid token Redirecting...");
-				window.location.href = '/#/login';
+				window.location.href = '/CSIT314Project/#/login';
 				return;
 			}
 		}

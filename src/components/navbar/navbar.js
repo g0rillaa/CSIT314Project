@@ -22,10 +22,10 @@ function Navbar() {
 
     const handleUsernameClick = () => {
         if(username === ''){
-            window.location.href = '/#/login';
+            window.location.href = '/CSIT314Project/#/login';
 			return;
         } else {
-            window.location.href = '/#/account';
+            window.location.href = '/CSIT314Project/#/account';
 			return;
         }
     }

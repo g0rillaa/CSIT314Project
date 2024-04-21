@@ -19,15 +19,15 @@ function AccountView() {
 
     const logout = () => {
         clearToken();
-        window.location.href = '/#/login';
+        window.location.href = '/CSIT314Project/#/login';
         window.location.reload()
     }
 
     const directToOrders = () => {
-        window.location.href = '/#/account/orders'
+        window.location.href = '/CSIT314Project/#/account/orders'
     }
     const directToRestaurantManage = () => {
-        window.location.href = '/#/managerestaurant'
+        window.location.href = '/CSIT314Project/#/managerestaurant'
     }
 
     return (
