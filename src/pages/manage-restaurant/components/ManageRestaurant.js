@@ -10,7 +10,7 @@ function ManageRestaurant() {
     const [ownsRestaurant, setOwnsRestaurant] = useState(false);
     const [restaurantName, setRestaurantName] = useState('')
     const [restaurantLocation, setRestaurantLocation] = useState('')
-    const [restaurantCategory, setRestaurantCategory] = useState('')
+    //const [restaurantCategory, setRestaurantCategory] = useState('')
 
     useEffect(() => {
         fetchRestaurant();
@@ -26,7 +26,7 @@ function ManageRestaurant() {
         setOwnsRestaurant(true);
         setRestaurantName(restaurant.data.name);
         setRestaurantLocation(restaurant.data.location);
-        setRestaurantCategory(restaurant.data.category);
+        //setRestaurantCategory(restaurant.data.category);
     };
 
     const createNewRestaurantBtn = async () => {
