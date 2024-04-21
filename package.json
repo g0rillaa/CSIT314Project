@@ -21,7 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build -r https://${{ secrets.GITHUB_TOKEN }}@github.com/g0rillaa/CSIT314Project.git"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
