@@ -2,19 +2,19 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - main  # Adjust this if your deployment branch differs
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3  # Updated to v3
+      - uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3  # Updated to v3
+        uses: actions/setup-node@v3
         with:
-          node-version: '20'  # Updated to Node.js 20
+          node-version: '20'
           cache: 'npm'
 
       - name: Install Dependencies
@@ -22,6 +22,11 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Configure Git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
 
       - name: Deploy
         run: npm run deploy
