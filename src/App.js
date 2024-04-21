@@ -22,14 +22,14 @@ function App() {
 		<Router>
 			<Navbar/>
 			<Routes>
-				<Route path="/account" element={<AccountPage/>}/>
-				<Route path="/discover" element={<DiscoverPage/>}/>
-				<Route path="/" element={<HomePage/>}/>
-				<Route path="/login" element={<LoginPage/>}/>
-				<Route path="/managerestaurant" element={<ManageRestaurantPage/>}/>
-				<Route path="*" element={<NotFoundPage/>}/>
-				<Route path="/register" element={<RegisterPage/>}/>
-				<Route path="/subscription" element={<SubscriptionPage/>}/>
+				<Route path="/CSIT314Project/account" element={<AccountPage/>}/>
+				<Route path="/CSIT314Project/discover" element={<DiscoverPage/>}/>
+				<Route path="/CSIT314Project/" element={<HomePage/>}/>
+				<Route path="/CSIT314Project/login" element={<LoginPage/>}/>
+				<Route path="/CSIT314Project/managerestaurant" element={<ManageRestaurantPage/>}/>
+				<Route path="/CSIT314Project/*" element={<NotFoundPage/>}/>
+				<Route path="/CSIT314Project/register" element={<RegisterPage/>}/>
+				<Route path="/CSIT314Project/subscription" element={<SubscriptionPage/>}/>
 			</Routes>
 		</Router>
 	);

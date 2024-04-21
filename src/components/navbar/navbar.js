@@ -30,10 +30,10 @@ function Navbar() {
 
     const handleUsernameClick = () => {
         if(username === ''){
-            window.location.href = '/login';
+            window.location.href = '/CSIT314Project/login';
 			return;
         } else {
-            window.location.href = '/account';
+            window.location.href = '/CSIT314Project/account';
 			return;
         }
     }
@@ -41,8 +41,8 @@ function Navbar() {
     return (
         <nav className="navbar">
             <div className="nav-links">
-                <Link to="/" className="nav-link">Home</Link>
-                <Link to="/subscription" className="nav-link">Subscription</Link>
+                <Link to="/CSIT314Project/" className="nav-link">Home</Link>
+                <Link to="/CSIT314Project/subscription" className="nav-link">Subscription</Link>
             </div>
             <div className="nav-button">
                 <button onClick={handleUsernameClick} className="login-button" id="login-button">
