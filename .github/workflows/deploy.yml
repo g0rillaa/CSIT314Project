@@ -1,28 +1,31 @@
-name: Deploy to GitHub Pages
-
+name: Build and Deploy
 on:
   push:
     branches:
-      - main  # or your default branch
+      - main  # Adjust this if your deployment branch differs
 
 jobs:
-  deploy:
+  build_and_deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'  # or any version you need
-
-      - name: Install dependencies
+          node-version: '20'
+          cache: 'npm'
+      - name: Install Dependencies
         run: npm install
-
       - name: Build
         run: npm run build
+      - name: Configure Git
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+      - name: Deploy
+        run: |
+          npm config set "//github.com/:_authToken" ${{ secrets.GITHUB_TOKEN }}
+          npm run deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
