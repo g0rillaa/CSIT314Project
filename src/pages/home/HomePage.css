@@ -1,0 +1,46 @@
+.HomePage {
+    padding-top: 20px;
+}
+
+.category-list {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    padding: 0;
+    margin: 0;
+    width: 140px;
+}
+
+.category-item {
+    background-color: #474747; /* Light gray background */
+    color: #ffffff;
+    border: none;
+    padding: 4px 12px;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.category-item:hover {
+    background-color: #363636; /* Slightly darker on hover */
+}
+
+.category-item.active {
+    background-color: var(--primary-color); /* Bootstrap primary color for active */
+    color: white; /* White text on active */
+    font-weight: bold;
+}
+
+
+.top-part {
+    width: 100%;
+    display: flex;
+}
+
+.top-part-img {
+    margin-left: 10px;
+    width: 100%;
+    background-size: cover;
+    background-image: url('./assets/food2.jpg');
+    border-radius: 10px;
+}

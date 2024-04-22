@@ -49,9 +49,43 @@ body {
     border-radius: 10px;
     cursor: pointer;
     transition-duration: 0.1s;
+    color: #000000;
 }
 
 .loginButton:hover {
     border: 2px solid var(--primary-color-hvr);
     background-color: #d0eefa;
+}
+
+
+
+@media (max-width: 650px) {
+    .loginPane {
+        flex-direction: column; /* Stack flex children vertically */
+        height: auto; /* Adjust height to be auto to contain its children */
+    }
+
+    .loginForm, .loginImage {
+        width: 100%; /* Each child takes full width */
+        border-radius: 20px; /* Apply border-radius to all sides if needed */
+    }
+
+    .loginImage {
+        border-top-right-radius: 20px; /* Maintain top right radius */
+        border-top-left-radius: 20px;  /* Add top left radius */
+        border-bottom-right-radius: 0; /* Remove bottom right radius */
+        border-bottom-left-radius: 0;  /* Remove bottom left radius */
+    }
+}
+
+@media (max-width: 400px) {
+    .loginButton {
+        width: 80px;
+        margin: 5px;
+        padding: 5px;
+    }
+
+    .loginForm input {
+        width: 180px;
+    }
 }

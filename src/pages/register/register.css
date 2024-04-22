@@ -63,3 +63,39 @@ body {
     padding: 5px;
     margin: 10px;
 }
+
+
+@media (max-width: 650px) {
+    .registerPane {
+        flex-direction: column; /* Stack flex children vertically */
+        height: auto; /* Adjust height to be auto to contain its children */
+    }
+
+    .registerForm, .registerImage {
+        width: 100%; /* Each child takes full width */
+        border-radius: 20px; /* Apply border-radius to all sides if needed */
+    }
+
+    .registerImage {
+        border-top-right-radius: 20px; /* Maintain top right radius */
+        border-top-left-radius: 20px;  /* Add top left radius */
+        border-bottom-right-radius: 0; /* Remove bottom right radius */
+        border-bottom-left-radius: 0;  /* Remove bottom left radius */
+    }
+}
+
+@media (max-width: 400px) {
+    .registerButton {
+        width: 80px;
+        margin: 5px;
+        padding: 5px;
+    }
+
+    .registerForm input {
+        width: 180px;
+    }
+
+    .registerDropdown {
+        width: 180px;
+    }
+}

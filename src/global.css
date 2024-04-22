@@ -17,8 +17,9 @@ body, html {
     justify-content: space-between; /* Spaces children equally */
     background-color: #ffffff;
     width: calc(100% - 60px);
-    margin: 60px auto; /* Shorthand to handle top and horizontal margins */
+    margin: 30px auto; /* Shorthand to handle top and horizontal margins */
     border-radius: 20px;
+    padding: 1px;
 }
 
 .click-btn {
@@ -34,6 +35,22 @@ body, html {
 
 .click-btn:hover {
     background-color: var(--primary-color-hvr); /* Darker shade for hover effect */
+}
+
+
+@media (max-width: 650px) {
+    .window-pane {
+        flex-direction: column; /* Stack flex children vertically */
+        height: auto; /* Adjust height to be auto to contain its children */
+    }
+}
+
+@media (max-width: 400px) {
+    .click-btn {
+        width: 100px;
+        margin: 10px;
+        padding: 5px;
+    }
 }
 
 

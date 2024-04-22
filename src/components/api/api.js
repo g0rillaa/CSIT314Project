@@ -66,11 +66,40 @@ export const getRestaurantFromUsername = async (name) => {
 }
 
 
-export const createNewRestaurant = async (owner) => {
+export const createNewRestaurant = async() => {
+    const token = getToken()
+    if(token){
+        try {
+            const response = await axios.post(`${apiurl}/createnewrestaurant`, {
+                token: token
+            });
+            return response;
+        } catch (error) {
+            console.error('Error making the request:', error);
+        }
+    }
+}
+
+export const updateRestaurantDetails = async(name, location, category) => {
+    const token = getToken()
+    if(token){
+        try {
+            const response = await axios.post(`${apiurl}/updaterestaurantdetails`, {
+                token: token,
+                name: name,
+                location: location,
+                category: category
+            });
+            return response;
+        } catch (error) {
+            console.error('Error making the request:', error);
+        }
+    }
+}
+
+export const getAllRestaurants = async() => {
     try {
-        const response = await axios.post(`${apiurl}/createnewrestaurant`, {
-            owner: owner
-        });
+        const response = await axios.get(`${apiurl}/getallrestaurants`);
         return response;
     } catch (error) {
         console.error('Error making the request:', error);

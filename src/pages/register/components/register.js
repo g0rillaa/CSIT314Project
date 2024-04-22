@@ -19,7 +19,9 @@ function RegisterForm() {
             } else {
                 saveToken(response.data.token);
                 displayNotification('success', `Created account ${username}`);
-                document.getElementById("login-button").innerHTML = `${username}`
+                setTimeout(() => {
+                    window.location.reload()
+                }, 3000)
             }
         } catch (error) {
             console.error('Error making the request:', error);

@@ -32,16 +32,14 @@ function Navbar() {
 
     return (
         <nav className="navbar">
-            <div className="nav-links">
+            <div className="nav-container">
                 <Link to="/" className="nav-link">Home</Link>
-                <Link to="/subscription" className="nav-link">Subscription</Link>
-            </div>
-            <div className="nav-button">
-                <button onClick={handleUsernameClick} className="login-button" id="login-button">
+                <button onClick={handleUsernameClick} className="login-button">
                     {username || 'Login'}
                 </button>
             </div>
         </nav>
+
     );
 }
 

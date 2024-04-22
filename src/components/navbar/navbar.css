@@ -1,41 +1,47 @@
+/* General Navbar Styles */
 .navbar {
-    padding: 0;
-    margin: 0;
-    background-color: rgb(214, 214, 214);
-    height: 50px;
+    background-color: #424242; /* Dark background for the navbar */
+    color: #fff; /* Light text color for contrast */
+    padding: 10px 20px; /* Padding around the navbar */
+    display: flex; /* Uses flexbox to align children */
+    justify-content: center; /* Centers the navbar content */
+    align-items: center; /* Aligns items vertically */
+}
+
+/* Container within the navbar for better alignment */
+.nav-container {
     width: 100%;
-    border-bottom: 2px solid rgb(180, 180, 180);
+    max-width: 1200px; /* Max width for content within the navbar */
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Space between the home link and login button */
     align-items: center;
-    padding: 0 20px;
 }
 
-
+/* Styling for navigation links */
 .nav-link {
-    margin-right: 20px;
-    text-decoration: none;
-    color: black; /* Set the color for links */
+    color: #fff; /* White color for the link */
+    text-decoration: none; /* Removes underline */
+    padding: 8px 15px; /* Padding for better touch area */
+    transition: color 0.3s ease; /* Smooth transition for hover effects */
+    border-bottom: 1px solid white;
+    border-radius: 3px;
 }
 
-.nav-link:last-child {
-    margin-right: 0; /* Removes margin from the last link */
+.nav-link:hover {
+    color: #1E90FF; /* Light blue color on hover */
 }
 
-.nav-button {
-    /* Styles for the button container */
-}
-
+/* Styling for the login button */
 .login-button {
-    padding: 10px 20px;
-    cursor: pointer;
-    background-color: var(--primary-color); /* Example button color */
+    padding: 8px 20px; /* Padding to make the button larger */
+    background-color: var(--primary-color); /* Bootstrap's primary color */
     color: white; /* Text color */
-    border: none;
+    border: none; /* Removes border */
     border-radius: 5px; /* Rounded corners for the button */
-    transition-duration: 0.1s;
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
 }
 
 .login-button:hover {
-    background-color: var(--primary-color-hvr); /* Darker shade for hover effect */
+    background-color: var(--primary-color-hvr); /* Darker shade of blue on hover */
 }

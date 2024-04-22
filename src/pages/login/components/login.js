@@ -30,7 +30,7 @@ function LoginForm() {
     };
 
     const directToRegister = () => {
-        window.location.href = '/register'
+        window.location.href = '/CSIT314Project/#/register'
     }
 
     return (
