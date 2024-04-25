@@ -15,7 +15,7 @@ export const getAccount = async () => {
                 if(response.data.errorMsg === 'Invalid token'){
                     clearToken()
                     console.log("Invalid token Redirecting...");
-                    window.location.href = '/login';
+                    window.location.href = '/CSIT314Project/#/login';
                     return;
                 }
             }
@@ -80,7 +80,7 @@ export const createNewRestaurant = async() => {
     }
 }
 
-export const updateRestaurantDetails = async(name, location, category) => {
+export const updateRestaurantDetails = async(name, location, category, imgurl) => {
     const token = getToken()
     if(token){
         try {
@@ -88,7 +88,8 @@ export const updateRestaurantDetails = async(name, location, category) => {
                 token: token,
                 name: name,
                 location: location,
-                category: category
+                category: category,
+                imgurl: imgurl
             });
             return response;
         } catch (error) {
@@ -103,5 +104,66 @@ export const getAllRestaurants = async() => {
         return response;
     } catch (error) {
         console.error('Error making the request:', error);
+    }
+}
+
+
+
+export const addDish = async() => {
+    const token = getToken()
+    if(token){
+        try {
+            const response = await axios.post(`${apiurl}/adddish`, {
+                token: token
+            });
+            return response;
+        } catch (error) {
+            console.error('Error making the request:', error);
+        }
+    }
+}
+
+export const getDishesFromRestaurantID = async(id) => {
+    try {
+        const response = await axios.get(`${apiurl}/getdishesfromrestaurantid`, {
+            headers: { restaurantid: `${id}` }
+        });
+        return response;
+    } catch (error) {
+        console.error('Error making the request:', error);
+    }
+}
+
+export const updateDish = async(id, name, type, price, imgurl) => {
+    const token = getToken()
+    if(token){
+        try {
+            const response = await axios.post(`${apiurl}/updatedish`, {
+                token: token,
+                id: id,
+                name: name,
+                type: type,
+                price: price,
+                imgurl: imgurl
+            });
+            return response;
+        } catch (error) {
+            console.error('Error making the request:', error);
+        }
+    }
+}
+
+export const deleteDish = async(id) => {
+    const token = getToken()
+    if(token){
+        try {
+            const response = await axios.post(`${apiurl}/deletedish`, {
+                token: token,
+                id: id,
+            });
+            return response;
+        } catch (error) {
+            console.error('Error making the request:', error);
+        }
     }
 }

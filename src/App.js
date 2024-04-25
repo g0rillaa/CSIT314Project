@@ -9,6 +9,7 @@ import DiscoverPage from './pages/discover/DiscoverPage';
 import HomePage from './pages/home/HomePage';
 import LoginPage from './pages/login/LoginPage';
 import ManageRestaurantPage from './pages/manage-restaurant/ManageRestaurantPage';
+import ManageDishesPage from './pages/manage-dishes/ManageDishesPage';
 import NotFoundPage from './pages/notfound/NotFoundPage';
 import RegisterPage from './pages/register/RegisterPage';
 import SubscriptionPage from './pages/subscription/SubscriptionPage';
@@ -24,6 +25,7 @@ function App() {
                 <Route path="/discover" element={<DiscoverPage />} />
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="/managedishes" element={<ManageDishesPage />} />
                 <Route path="/managerestaurant" element={<ManageRestaurantPage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/subscription" element={<SubscriptionPage />} />

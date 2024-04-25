@@ -1,27 +1,14 @@
-.title {
-    margin: 20px;
-}
-
-label {
-    margin: 20px;
-    margin-right: 5px;
-}
-
-input {
-    width: 220px;
-    height: 24px;
-    padding: 15px;
-    margin: 10px;
+.mr-logo-display {
     border: 1px solid black;
     border-radius: 10px;
+    height: 100px;
+    width: auto;
 }
 
-select {
-    width: 220px;
-    height: 24px;
-    padding: 15px;
-    margin: 10px;
-    border: 1px solid black;
-    border-radius: 10px;
-    color: black;
+.mr-dishes-btn-div {
+    margin-top: 20px;
+}
+
+.mr-unsaved {
+    color: red;
 }

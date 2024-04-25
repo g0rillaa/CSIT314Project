@@ -36,7 +36,6 @@ function HomePage() {
     return (
 		<div className='window-pane'>
 			<Container className='HomePage'>
-				{/* Adjusted Row for the dropdown to align to the left */}
 				<Row className="justify-content-start mb-4">
 					<Col xs={12}>
 						<div className='top-part'>
@@ -56,6 +55,9 @@ function HomePage() {
 						
 					</Col>
 				</Row>
+				
+				<h3>Restaurants</h3>
+
 				<Row>
 					{filteredRestaurants.map((restaurant, index) => (
 						<Col key={index} sm={12} md={6} lg={4} className="mb-4">
@@ -63,6 +65,8 @@ function HomePage() {
 						</Col>
 					))}
 				</Row>
+
+				<h3>Suggested Dishes</h3>
 			</Container>
 		</div>
     );

@@ -1,0 +1,18 @@
+.restaurant-card {
+    margin: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    width: 300px;
+}
+
+.restaurant-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+
+@media (max-width: 770px) {
+    .restaurant-card {
+        width: 200px;
+    }
+}

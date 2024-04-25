@@ -1,0 +1,32 @@
+/* Additional styling for cards */
+.md-ard {
+    margin-bottom: 20px; /* Adds more space between each card */
+}
+
+/* Align items in form rows for better visual structure */
+.form-label {
+    text-align: right; /* Aligns labels to the right of their column */
+}
+
+/* Style buttons to be aligned with form fields */
+.md-btn {
+    width: 100%; /* Make button width consistent with input fields */
+    margin-top: 10px; /* Adds some space above the button */
+}
+
+.md-img {
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 100px;
+    width: auto;
+}
+
+.md-savebtn {
+    margin-right: 10px;
+}
+
+@media (max-width: 576px) {
+    .form-label {
+        text-align: left; /* Ensures labels are left-aligned on small screens */
+    }
+}
