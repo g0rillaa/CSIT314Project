@@ -64,7 +64,7 @@ function ManageRestaurant() {
     };
 
     const directToManageDishes = async () => {
-        return window.location.href = '/CSIT314/#/managedishes'
+        return window.location.href = '/CSIT314Project/#/managedishes'
     }
 
     const writeValues = async () => {
