@@ -6,7 +6,7 @@ import './card.css'
 function RestaurantCard({ restaurant }) {
     // Function to handle click on the card
     const handleClick = () => {
-        window.location.href = `/CSIT314Project/#/restaurant?id=${restaurant.id}`;
+        window.location.href = `/CSIT314Project/#/restaurant?id=${restaurant._id}`;
     };
 
     return (

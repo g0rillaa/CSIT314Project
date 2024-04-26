@@ -167,3 +167,13 @@ export const deleteDish = async(id) => {
         }
     }
 }
+
+
+export const getAllDishes = async() => {
+    try {
+        const response = await axios.get(`${apiurl}/getalldishes`);
+        return response;
+    } catch (error) {
+        console.error('Error making the request:', error);
+    } 
+}
