@@ -97,30 +97,30 @@ function HomePage() {
                         </InputGroup>
                     </Col>
                 </Row>
+
 				
 				<h3>Restaurants</h3>
-				<Row className="restaurant-card-container">
-					{ filteredRestaurants.length === 0 ? (
-						<p>No results found</p>
-					) : (<div></div>)}
-					{filteredRestaurants.map((restaurant, index) => (
-						<Col key={index} sm={12} md={6} lg={4} className="mb-4">
-							<RestaurantCard restaurant={restaurant} />
-						</Col>
-					))}
-				</Row>
+				{ filteredRestaurants.length === 0 ? (
+					<p>No results found</p>
+				) : (
+					<Row className="card-container">
+						{filteredRestaurants.map((restaurant, index) => (
+							<RestaurantCard key={index} restaurant={restaurant} />
+						))}
+					</Row>
+				)}
 
-				<h3>Dishes</h3>
-				<Row>
-					{ filteredDishes.length === 0 ? (
-						<p>No results found</p>
-					) : (<div></div>)}
-					{filteredDishes.map((dish, index) => (
-						<Col key={index} sm={12} md={6} lg={4} className="mb-4">
-							<DishCard dish={dish} allRestaurants={restaurants}/>
-						</Col>
-					))}
-				</Row>
+				<h3 style={{ marginTop: '20px' }}>Dishes</h3>
+				{ filteredDishes.length === 0 ? (
+					<p>No results found</p>
+				) : (
+					<Row className="card-container">
+						{filteredDishes.map((dish, index) => (
+							<DishCard key={index} dish={dish} allRestaurants={restaurants}/>
+						))}
+					</Row>
+				)}
+
 			</Container>
 		</div>
     );

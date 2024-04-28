@@ -10,14 +10,14 @@ function RestaurantCard({ restaurant }) {
     };
 
     return (
-        <Card className="restaurant-card" onClick={handleClick} style={{ cursor: 'pointer', marginBottom: '20px' }}>
+        <Card className="restaurant-card" onClick={handleClick} style={{ cursor: 'pointer', marginBottom: '8px' }}>
             <Card.Img variant="top" src={`${restaurant.img_url}`}/>
             <Card.Body>
-                <Card.Title>{restaurant.name}</Card.Title>
-                <Card.Text>
+                <Card.Title className='card-title'>{restaurant.name}</Card.Title>
+                <Card.Text style={{marginBottom: '2px'}} className='card-txt'>
                     Location: {restaurant.location}
                 </Card.Text>
-                <Card.Text>
+                <Card.Text className='card-txt'>
                     Category: {restaurant.category}
                 </Card.Text>
             </Card.Body>

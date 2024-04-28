@@ -177,3 +177,66 @@ export const getAllDishes = async() => {
         console.error('Error making the request:', error);
     } 
 }
+
+
+export const getOrder = async () => {
+    const token = getToken()
+    if(token){
+        try {
+            const response = await axios.get(`${apiurl}/getorder`, {
+                headers: { token: `${token}` }
+            });
+            return response;
+        } catch (error) {
+            console.error('Error making the request:', error);
+        }
+    }
+}
+
+
+export const addToOrder = async (dishid) => {
+    const token = getToken()
+    if(token){
+        try {
+            const response = await axios.post(`${apiurl}/addtoorder`, {
+               token: `${token}`,
+               dishid: dishid
+            });
+            return response;
+        } catch (error) {
+            console.error('Error making the request:', error);
+        }
+    }
+}
+
+export const setOrderQty = async (dishid, qty) => {
+    const token = getToken()
+    if(token){
+        try {
+            const response = await axios.post(`${apiurl}/setorderqty`, {
+               token: `${token}`,
+               dishid: dishid,
+               qty: qty
+            });
+            return response;
+        } catch (error) {
+            console.error('Error making the request:', error);
+        }
+    }
+}
+
+
+export const deleteFromOrder = async (dishid) => {
+    const token = getToken()
+    if(token){
+        try {
+            const response = await axios.post(`${apiurl}/deletefromorder`, {
+               token: `${token}`,
+               dishid: dishid
+            });
+            return response;
+        } catch (error) {
+            console.error('Error making the request:', error);
+        }
+    }
+}

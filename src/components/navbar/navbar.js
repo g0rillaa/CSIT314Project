@@ -30,13 +30,24 @@ function Navbar() {
         }
     }
 
+    const handleMyOrderClick = () => {
+        if(username === ''){
+            window.location.href = '/CSIT314Project/#/login';
+			return;
+        } else {
+            window.location.href = '/CSIT314Project/#/myorder';
+			return;
+        }
+    }
+
     return (
         <nav className="navbar">
             <div className="nav-container">
                 <Link to="/" className="nav-link">Home</Link>
-                <button onClick={handleUsernameClick} className="login-button">
-                    {username || 'Login'}
-                </button>
+                <div>
+                    <button onClick={handleMyOrderClick} className="login-button" style={{ marginRight: '10px'}}>My Order</button>
+                    <button onClick={handleUsernameClick} className="login-button">{username || 'Login'}</button>
+                </div>
             </div>
         </nav>
 

@@ -1,0 +1,87 @@
+.ds-page {
+    padding: 20px;
+    width: calc(100% - 500px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ds-title {
+    font-size: 30px;
+}
+
+.ds-type {
+    font-size: 20px;
+}
+.ds-price {
+    font-size: 20px;
+}
+
+.ds-img {
+    border-radius: 20px;
+    border: 2px solid rgb(160, 160, 160);
+    height: 300px;
+}
+
+.ds-rs-btn {
+    padding: 8px 20px; /* Padding to make the button larger */
+    background-color: var(--primary-color); /* Bootstrap's primary color */
+    color: white; /* Text color */
+    border: none; /* Removes border */
+    border-radius: 5px; /* Rounded corners for the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+    
+}
+
+.ds-rs-btn:hover {
+    background-color: var(--primary-color-hvr); /* Darker shade of blue on hover */
+}
+
+
+@media (max-width: 1600px) {
+    .ds-page {
+        width: calc(100% - 400px);
+    }
+}
+
+@media (max-width: 1300px) {
+    .ds-page {
+        width: calc(100% - 300px);
+    }
+}
+
+@media (max-width: 1000px) {
+    .ds-page {
+        width: calc(100% - 200px);
+    }
+}
+
+@media (max-width: 850px) {
+    .ds-page {
+        width: calc(100% - 100px);
+    }
+}
+
+@media (max-width: 770px) {
+    .ds-page {
+        width: calc(100% - 100px);
+    }
+    
+    .ds-title {
+        font-size: 24px;
+    }
+    
+    .ds-type {
+        font-size: 18px;
+    }
+    .ds-price {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 580px) {
+    .ds-img {
+       width: 100%;
+       height: auto;
+    }
+}

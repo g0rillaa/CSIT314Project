@@ -1,0 +1,21 @@
+.order-card {
+    border: 1px solid black;
+    margin: 10px;
+    padding: 10px;
+    background-color: rgb(230, 230, 230);
+}
+
+.order-card-btn {
+    margin: 0;
+    margin-right: 5px;
+    background-color: rgb(173, 173, 173);
+}
+
+.btn-inactive {
+    background-color: rgb(117, 117, 117);
+}
+
+.btn-inactive:hover {
+    background-color: rgb(117, 117, 117);
+    cursor: not-allowed;
+}

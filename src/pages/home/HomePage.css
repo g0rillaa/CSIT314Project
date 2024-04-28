@@ -44,3 +44,11 @@
     background-image: url('./assets/food2.jpg');
     border-radius: 10px;
 }
+
+
+.card-container {
+    overflow-x: scroll;
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 10px;
+}
