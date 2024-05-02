@@ -1,0 +1,29 @@
+.pending-order-card {
+    border: 1px solid black;
+    margin: 10px;
+    padding: 10px;
+    background-color: rgb(230, 230, 230);
+    width: 250px;
+}
+
+.pending-order-card-item {
+    border-bottom: 1px solid black;
+    background-color: rgb(230, 230, 230);
+}
+
+.pending-order-btn-a {
+    margin: 2px;
+    background-color: rgb(50,200,50);
+    
+}
+.pending-order-btn-a:hover {
+    background-color: rgb(92, 209, 92);
+}
+
+.pending-order-btn-d {
+    margin: 2px;
+    background-color: rgb(200,50,50);
+}
+.pending-order-btn-d:hover {
+    background-color: rgb(218, 69, 69);
+}

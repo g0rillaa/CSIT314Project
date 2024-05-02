@@ -240,3 +240,26 @@ export const deleteFromOrder = async (dishid) => {
         }
     }
 }
+
+export const getPendingOrders = async () => {
+    try {
+        const response = await axios.get(`${apiurl}/getpendingorders`);
+        return response;
+    } catch (error) {
+        console.error('Error making the request:', error);
+    }
+}
+
+export const finaliseOrder = async () => {
+    const token = getToken()
+    if(token){
+        try {
+            const response = await axios.post(`${apiurl}/finaliseorder`, {
+               token: `${token}`
+            });
+            return response;
+        } catch (error) {
+            console.error('Error making the request:', error);
+        }
+    }
+}

@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './global.css';
 
 import AccountPage from './pages/account/AccountPage';
-import DiscoverPage from './pages/discover/DiscoverPage';
+import DashboardPage from './pages/dashboard/DashboardPage';
 import DishPage from './pages/dish/DishPage';
 import HomePage from './pages/home/HomePage';
 import LoginPage from './pages/login/LoginPage';
@@ -25,7 +25,7 @@ function App() {
             <Navbar />
             <Routes>
                 <Route path="/account" element={<AccountPage />} />
-                <Route path="/discover" element={<DiscoverPage />} />
+                <Route path="/dashboard" element={<DashboardPage />} />
                 <Route path="/dish" element={<DishPage />} />
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<LoginPage />} />

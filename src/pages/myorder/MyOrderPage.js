@@ -1,16 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { getAccount, getOrder, getAllDishes, getAllRestaurants } from '../../components/api/api.js';
+import { getAccount, getOrder, getAllDishes, getAllRestaurants, finaliseOrder } from '../../components/api/api.js';
 import OrderItem from './OrderItem.js'
 import './myorder.css'
+import { Form, Button } from 'react-bootstrap';
+import { useNotification } from '../../components/notification/NotificationContext.js';
 
 
 function MyOrderPage() {
-
+	const displayNotification = useNotification();
 	const [isRestaurantOwner, setIsRestaurantOwner] = useState(false);
 	const [order, setOrder] = useState([])
+	const [total, setTotal] = useState(0)
 
 	const [allDishes, setAllDishes] = useState([]);
 	const [allRestaurants, setAllRestaurants] = useState([]);
+
+	const [cardDetails, setCardDetails] = useState({
+		cardNumber: '',
+		expiration: '',
+		cvv: ''
+	});
 
 	useEffect(() => {
 		const getUserAccount = async () => {
@@ -34,10 +43,45 @@ function MyOrderPage() {
 			setAllRestaurants(restaurants.data);
 			setAllDishes(dishes.data)
 			setOrder(currentOrder.data)
+			calcTotal(dishes, currentOrder)
+		}
+
+		const calcTotal = async (dishes, currentOrder) => {
+			let tempTotal = 0;
+			currentOrder.data.forEach(order => {
+				dishes.data.forEach(dish => {
+					if(order.id === dish._id){
+						tempTotal += (Number(dish.price) * order.qty)
+					}
+				})
+			})
+			setTotal(tempTotal)
 		}
 
 		getUserAccount();
 	}, [])
+
+	const handleInputChange = (e) => {
+		setCardDetails({...cardDetails, [e.target.name]: e.target.value});
+	};
+
+	const handlePlaceOrder = async () => {
+		// Simple validation for example
+		if (!cardDetails.cardNumber || !cardDetails.expiration || !cardDetails.cvv) {
+			alert("Please fill in all card details.");
+			return;
+		}
+		const result = await finaliseOrder();
+		if(result.data.error){
+			displayNotification('error', `${result.data.errorMsg}`);
+		}
+		if(result.data.success){
+			displayNotification('success', `Order Placed!`);
+			setTimeout(() => {
+				window.location.href = `/CSIT314Project/#/order?id=${result.data.ref}`;
+			}, 1500)
+		}
+	};
     
     
 	return (
@@ -57,6 +101,22 @@ function MyOrderPage() {
 									<OrderItem item={item} dishes={allDishes} restaurants={allRestaurants}></OrderItem>
 								</div>
 							))}
+							<h5>Total: ${total.toFixed(2)}</h5>
+							<Form>
+								<Form.Group>
+									<Form.Label>Card Number</Form.Label>
+									<Form.Control type="text" placeholder="Enter card number" name="cardNumber" value={cardDetails.cardNumber} onChange={handleInputChange} />
+								</Form.Group>
+								<Form.Group>
+									<Form.Label>Expiration Date</Form.Label>
+									<Form.Control type="text" placeholder="MM/YY" name="expiration" value={cardDetails.expiration} onChange={handleInputChange} />
+								</Form.Group>
+								<Form.Group>
+									<Form.Label>CVV</Form.Label>
+									<Form.Control type="text" placeholder="CVV" name="cvv" value={cardDetails.cvv} onChange={handleInputChange} />
+								</Form.Group>
+								<Button className='click-btn' onClick={handlePlaceOrder}>Place Order</Button>
+							</Form>
 						</div>
 					)}
 				</div>

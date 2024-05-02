@@ -33,6 +33,7 @@ function OrderItem({ item, dishes, restaurants }) {
         let temp = qty + 1
         setQty(temp)
         setOrderQty(dish._id, temp)
+        window.location.reload()
     }
 
     const handleMinus = async () => {
@@ -42,6 +43,7 @@ function OrderItem({ item, dishes, restaurants }) {
         let temp = qty - 1
         setQty(temp)
         setOrderQty(dish._id, temp)
+        window.location.reload()
     }
 
     const handleDelete = async () => {
