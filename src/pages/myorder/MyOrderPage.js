@@ -21,6 +21,8 @@ function MyOrderPage() {
 		cvv: ''
 	});
 
+	const [subscribed, setSubscribed] = useState(false)
+
 	useEffect(() => {
 		const getUserAccount = async () => {
 			const account = await getAccount()
@@ -29,6 +31,9 @@ function MyOrderPage() {
 			} else {
 				setIsRestaurantOwner(false)
 				fetchOrder()
+			}
+			if(account.data.subscribed){
+				setSubscribed(true)
 			}
 		}
 
@@ -55,10 +60,14 @@ function MyOrderPage() {
 					}
 				})
 			})
+			if(subscribed){
+				tempTotal = tempTotal - (tempTotal*0.15)
+			}
 			setTotal(tempTotal)
 		}
 
 		getUserAccount();
+		// eslint-disable-next-line
 	}, [])
 
 	const handleInputChange = (e) => {
@@ -101,7 +110,12 @@ function MyOrderPage() {
 									<OrderItem item={item} dishes={allDishes} restaurants={allRestaurants}></OrderItem>
 								</div>
 							))}
-							<h5>Total: ${total.toFixed(2)}</h5>
+							{subscribed ? (
+								<h5>Total: ${total.toFixed(2)} (15% discount)</h5>
+							) : (
+								<h5>Total: ${total.toFixed(2)}</h5>
+							)}
+							
 							<Form>
 								<Form.Group>
 									<Form.Label>Card Number</Form.Label>

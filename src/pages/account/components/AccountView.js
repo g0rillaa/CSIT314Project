@@ -30,12 +30,17 @@ function AccountView() {
         window.location.href = '/CSIT314Project/#/managerestaurant'
     }
 
+    const directToSubscription = () => {
+        window.location.href = '/CSIT314Project/#/subscription'
+    }
+
     return (
         <div className="window-pane">
             <h1 className='account-hello'>{`Hi, ${username || '...'}`}</h1>
             { accType === 'customer' ?
                 <div>
                     <button className='click-btn account-recent-orders' onClick={ directToOrders }>View Recent Orders</button>
+                    <button className='click-btn account-recent-orders' onClick={ directToSubscription }>Manage Subscription</button>
                 </div>: ''}
             { accType === 'restaurant_owner' ?
                 <div>

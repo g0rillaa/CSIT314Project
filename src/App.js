@@ -14,6 +14,7 @@ import ManageRestaurantPage from './pages/manage-restaurant/ManageRestaurantPage
 import MyOrderPage from './pages/myorder/MyOrderPage';
 import NotFoundPage from './pages/notfound/NotFoundPage';
 import OrderPage from './pages/orderpage/OrderPage';
+import RecentOrdersPage from './pages/recent-orders/RecentOrdersPage';
 import RegisterPage from './pages/register/RegisterPage';
 import RestaurantPage from './pages/restaurant/RestaurantPage';
 import SubscriptionPage from './pages/subscription/SubscriptionPage';
@@ -36,6 +37,7 @@ function App() {
                 <Route path="/order" element={<OrderPage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/restaurant" element={<RestaurantPage />} />
+                <Route path="/account/orders" element={<RecentOrdersPage />} />
                 <Route path="/subscription" element={<SubscriptionPage />} />
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>

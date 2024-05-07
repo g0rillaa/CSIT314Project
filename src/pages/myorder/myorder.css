@@ -19,3 +19,11 @@
     background-color: rgb(117, 117, 117);
     cursor: not-allowed;
 }
+
+@media (max-width: 400px) {
+    .order-card-btn {
+        margin-right: 2px;
+        padding: 8px;
+        width: 60px;
+    }
+}

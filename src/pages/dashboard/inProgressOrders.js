@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { getPendingOrders, getAllDishes, setOrderStatus } from '../../components/api/api.js';
+import { getPreparingOrders, getAllDishes, setOrderStatus } from '../../components/api/api.js';
 import PendingOrderItem from './pendingOrderItem.js';
 import { formatDistanceToNow } from 'date-fns';
 
-function PendingOrders({rid}) {
+function InProgressOrders({rid}) {
     const [orders, setOrders] = useState([])
     const [allDishes, setAllDishes] = useState([])
 
@@ -19,17 +19,17 @@ function PendingOrders({rid}) {
         const response = await getAllDishes();
 		const allDishes = response.data
         setAllDishes(allDishes)
-        await fetchPendingOrders(allDishes);
+        await fetchPreparingOrders(allDishes);
         setInterval(async () => {
-            await fetchPendingOrders(allDishes);
+            await fetchPreparingOrders(allDishes);
         }, 3000)
         
     }
 
 
-    const fetchPendingOrders = async (dishes) => {
+    const fetchPreparingOrders = async (dishes) => {
         let tempOrders = []
-        const fetchedOrders = await getPendingOrders()
+        const fetchedOrders = await getPreparingOrders()
         fetchedOrders.data.forEach(o => {
             if(o.restaurant === rid){
                 tempOrders.push(o)
@@ -53,11 +53,11 @@ function PendingOrders({rid}) {
         return sum
     }
 
-    const acceptOrderBtn = (item) => {
-        setOrderStatus(item.ref, 'preparing')
+    const completeOrderBtn = (item) => {
+        setOrderStatus(item.ref, 'completed')
     }
 
-    const declineOrderBtn = (item) => {
+    const cancelOrderBtn = (item) => {
         setOrderStatus(item.ref, 'cancelled')
     }
 
@@ -66,7 +66,7 @@ function PendingOrders({rid}) {
     return (
         <div style={{padding: '2px'}}>
             { orders.length === 0 ? (
-                <p style={{marginTop: "20px"}}>You have no pending orders.</p>
+                <p style={{marginTop: "20px"}}>You have no in-progress orders.</p>
             ) : (
                 <div>
                     {orders.map((item, index) => (
@@ -84,8 +84,8 @@ function PendingOrders({rid}) {
                             )}
                             <h6>{formatDistanceToNow(new Date(item.creation_date), { addSuffix: true })}</h6>
                             <div style={{display: 'flex'}}>
-                                <button className='click-btn pending-order-btn-a' onClick={ () => acceptOrderBtn(item) }>Accept</button>
-                                <button className='click-btn pending-order-btn-d' onClick={ () =>  declineOrderBtn(item) }>Decline</button>
+                                <button className='click-btn pending-order-btn-a' onClick={ () => completeOrderBtn(item) }>Complete</button>
+                                <button className='click-btn pending-order-btn-d' onClick={ () =>  cancelOrderBtn(item) }>Cancel</button>
                             </div>
                         </div>
                         
@@ -98,4 +98,4 @@ function PendingOrders({rid}) {
     );
 }
 
-export default PendingOrders;
+export default InProgressOrders;

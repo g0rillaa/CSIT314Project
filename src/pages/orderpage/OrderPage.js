@@ -20,7 +20,7 @@ function OrderPage() {
         function getOrderRefFromURL() {
             const search = window.location.hash.split('?')[1];
             const params = new URLSearchParams(search);
-            return params.get('ref');
+            return params.get('id');
         }
 
         const fetchDishes = async () => {
@@ -37,9 +37,14 @@ function OrderPage() {
             const response = await getOrderStatus(orderRef)
             if(!response.data.error){
                 setOrder(response.data)
+                console.log(status, response.data.status)
                 if(status !== response.data.status){
                     setStatus(response.data.status)
-                    displayNotification('success', `Order status updated to ${getStatusTxt(response.data.status)}`)
+                    var type = 'success'
+                    if(response.data.status === 'cancelled'){
+                        type = 'error'
+                    }
+                    displayNotification(type, `Order status updated to ${getStatusTxt(response.data.status)}`)
                 }
                 
                 setNotFound(false)
@@ -61,6 +66,9 @@ function OrderPage() {
                 }
             })
         })
+        if(order.subscription){
+            sum = sum - (sum * 0.15)
+        }
         return sum
     }
 
@@ -68,6 +76,16 @@ function OrderPage() {
         if(txt === 'pending'){
             return 'Pending'
         }
+        if(txt === 'preparing'){
+            return 'Preparing'
+        }
+        if(txt === 'cancelled'){
+            return 'Cancelled'
+        }
+        if(txt === 'completed'){
+            return 'Completed'
+        }
+        return txt
     }
 
     
@@ -86,7 +104,12 @@ function OrderPage() {
                                         <PendingOrderItem item={item} dishes={allDishes}></PendingOrderItem>
                                     </div>
                                 ))}
-                                <h5>Total: ${calcTotal(order.order)}</h5>
+                                { order.subscription ? (
+                                    <h6>Total: ${calcTotal(order.order).toFixed(2)}(15% discount)</h6>
+                                ) : (
+                                    <h5>Total: ${calcTotal(order.order).toFixed(2)}</h5>
+                                )}
+                                
                                 <h6>{formatDistanceToNow(new Date(order.creation_date), { addSuffix: true })}</h6>
                                 
                             </div>

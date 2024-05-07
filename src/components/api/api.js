@@ -250,6 +250,15 @@ export const getPendingOrders = async () => {
     }
 }
 
+export const getPreparingOrders = async () => {
+    try {
+        const response = await axios.get(`${apiurl}/getpreparingorders`);
+        return response;
+    } catch (error) {
+        console.error('Error making the request:', error);
+    }
+}
+
 export const finaliseOrder = async () => {
     const token = getToken()
     if(token){
@@ -272,5 +281,52 @@ export const getOrderStatus = async (ref) => {
         return response;
     } catch (error) {
         console.error('Error making the request:', error);
+    }
+}
+
+export const setOrderStatus = async (ref, status) => {
+    const token = getToken()
+    if(token){
+        try {
+            const response = await axios.post(`${apiurl}/setorderstatus`, {
+               token: `${token}`,
+               ref: `${ref}`,
+               status: `${status}`
+            });
+            return response;
+        } catch (error) {
+            console.error('Error making the request:', error);
+        }
+    }
+}
+
+
+export const getUserOrders = async () => {
+    const token = getToken()
+    if(token){
+        try {
+            const response = await axios.get(`${apiurl}/getuserorders`, {
+                headers: { token: `${token}` }
+            });
+            return response;
+        } catch (error) {
+            console.error('Error making the request:', error);
+        }
+    }
+}
+
+
+export const setSubscriptionStatus = async (status) => {
+    const token = getToken()
+    if(token){
+        try {
+            const response = await axios.post(`${apiurl}/setsubscriptionstatus`, {
+               token: `${token}`,
+               status: `${status}`
+            });
+            return response;
+        } catch (error) {
+            console.error('Error making the request:', error);
+        }
     }
 }
