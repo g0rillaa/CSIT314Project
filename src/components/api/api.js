@@ -263,3 +263,14 @@ export const finaliseOrder = async () => {
         }
     }
 }
+
+export const getOrderStatus = async (ref) => {
+    try {
+        const response = await axios.get(`${apiurl}/getorderstatus`, {
+           headers: {ref: `${ref}`}
+        });
+        return response;
+    } catch (error) {
+        console.error('Error making the request:', error);
+    }
+}

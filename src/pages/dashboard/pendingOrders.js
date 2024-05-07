@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { getPendingOrders, getAllDishes } from '../../components/api/api.js';
 import PendingOrderItem from './pendingOrderItem.js';
+import { formatDistanceToNow } from 'date-fns';
 
-function PendingOrders({rid}) {
+function PendingOrders() {
     const [orders, setOrders] = useState([])
     const [allDishes, setAllDishes] = useState([])
 
@@ -18,20 +19,10 @@ function PendingOrders({rid}) {
         const response = await getAllDishes();
 		const allDishes = response.data
         setAllDishes(allDishes)
-        let filteredDishes = []
-        let ctr = 0
-        allDishes.forEach(async d => {
-            if(d.restaurant === rid){
-                filteredDishes.push(d)
-            }
-            ctr++
-            if(ctr === allDishes.length){
-                await fetchPendingOrders(filteredDishes);
-                setInterval(async () => {
-                    await fetchPendingOrders(filteredDishes);
-                }, 3000)
-            }
-        })
+        await fetchPendingOrders(allDishes);
+        setInterval(async () => {
+            await fetchPendingOrders(allDishes);
+        }, 3000)
         
     }
 
@@ -45,18 +36,28 @@ function PendingOrders({rid}) {
                     tempOrders.push(o)
                 }
             })
-            
         })
-
         setOrders(tempOrders)
     };
+
+    const calcTotal = (orderArray) => {
+        let sum = 0
+        orderArray.forEach(order => {
+            allDishes.forEach(dish => {
+                if(dish._id === order.id){
+                    sum += (dish.price * order.qty)
+                }
+            })
+        })
+        return sum
+    }
 
 
 
     return (
         <div style={{padding: '2px'}}>
             { orders.length === 0 ? (
-                <p style={{marginTop: "20px"}}>Your order is currently empty, visit the home page to add items.</p>
+                <p style={{marginTop: "20px"}}>You have no pending orders.</p>
             ) : (
                 <div>
                     {orders.map((item, index) => (
@@ -67,7 +68,8 @@ function PendingOrders({rid}) {
                                     <PendingOrderItem item={item} dishes={allDishes}></PendingOrderItem>
                                 </div>
                             ))}
-                            <h5>Total: ${}</h5>
+                            <h5>Total: ${calcTotal(item.order)}</h5>
+                            <h6>{formatDistanceToNow(new Date(item.creation_date), { addSuffix: true })}</h6>
                             <div style={{display: 'flex'}}>
                                 <button className='click-btn pending-order-btn-a'>Accept</button>
                                 <button className='click-btn pending-order-btn-d'>Decline</button>

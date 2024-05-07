@@ -29,7 +29,7 @@ function RestaurantDashboard() {
             <div>
                 <h5>Pending Orders</h5>
                 {restaurantID ? (
-                    <PendingOrders rid={restaurantID}></PendingOrders>
+                    <PendingOrders></PendingOrders>
                 ) : (
                     <p>Loading pending orders...</p>
                 )}
